@@ -46,3 +46,4 @@ testem.log
 Thumbs.db
 
 my-comments.txt
+/src/environments
