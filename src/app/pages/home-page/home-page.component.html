@@ -1,0 +1,56 @@
+<div class="wrapper mat-app-background" [ngClass]="{'dark-theme-mode':isDarkTheme, 'wrapperBackColorLightMode':!isDarkTheme}">
+
+  <mat-toolbar color="primary">
+      <button class="responsiveMenuIcon" mat-icon-button [matMenuTriggerFor]="menu" >
+          <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-slide-toggle  class="dark-mode-toggle" style="font-size: 14px;" [(ngModel)]="isDarkTheme" (change)="setTheme()">Dark Mode</mat-slide-toggle>
+          </button>
+          <button mat-menu-item (click)="onLogOut()">Log Out</button>
+      </mat-menu>
+
+      <span class="menuItem">Task Managment System</span>
+
+      <span class="example-spacer"></span>
+      <mat-slide-toggle class="menuItem" style="font-size: 14px;" [(ngModel)]="isDarkTheme" (change)="setTheme()">Dark Mode</mat-slide-toggle>
+      <button class="menuItem" mat-button (click)="onLogOut()">Log Out</button>
+  </mat-toolbar>
+
+  <div class="content">
+
+    <mat-form-field class="example-full-width" style="width: 40%;">
+      <mat-label>New Project Title</mat-label>
+      <input matInput placeholder="new project title" [(ngModel)]="newProjetTitle">
+    </mat-form-field>
+    &nbsp;
+    <button mat-stroked-button color="accent" (click)="onAddNewProject()" [disabled]="!newProjetTitle">Add New Project</button>
+
+    <div *ngIf="projects">
+
+      <mat-list role="list">
+        <mat-list-item class="listItem" [ngClass]="{'listBackColorDarkMode': (i%2==0 && isDarkTheme), 'listBackColorLightMode': (i%2==0 && !isDarkTheme)}" role="listitem" *ngFor="let project of projects; let i=index">
+          <div style="display: flex; flex-direction: row; justify-content: space-between; width: 100%;">
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+              <span
+              routerLink="/tasks"
+              [queryParams]="{projectID: project.id}"
+              style="cursor: pointer;">
+              {{project.data.projectTitle}}
+              </span>
+            </div>
+              <button class="removeButton" mat-stroked-button color="warn" (click)="onRemoveProject(project.id)">Remove</button>
+          </div>
+        </mat-list-item>
+      </mat-list>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+

@@ -1,0 +1,75 @@
+<div class="wrapper mat-app-background" [ngClass]="{'dark-theme-mode':isDarkTheme, 'wrapperBackColorLightMode':!isDarkTheme}">
+
+  <mat-toolbar color="primary">
+    <button class="responsiveMenuIcon" mat-icon-button [matMenuTriggerFor]="menu" >
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-slide-toggle  class="dark-mode-toggle" style="font-size: 14px;" [(ngModel)]="isDarkTheme" (change)="setTheme()">Dark Mode</mat-slide-toggle>
+        </button>
+        <button mat-menu-item (click)="onLogOut()">Log Out</button>
+    </mat-menu>
+
+    <span class="menuItem">Task Managment System</span>
+
+    <span class="example-spacer"></span>
+    <mat-slide-toggle class="menuItem" style="font-size: 14px;" [(ngModel)]="isDarkTheme" (change)="setTheme()">Dark Mode</mat-slide-toggle>
+    <button class="menuItem" mat-button (click)="onLogOut()">Log Out</button>
+</mat-toolbar>
+
+  <div class="content">
+
+    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+      <div style="flex: 9;">
+        <mat-form-field class="example-full-width" style="width: 40%;">
+          <mat-label>New Task</mat-label>
+          <input matInput placeholder="new task" [(ngModel)]="newTask">
+        </mat-form-field>
+        &nbsp;
+        <button mat-stroked-button color="accent" (click)="addTask()" [disabled]="!newTask">Add New Task</button>
+      </div>
+      <div style="display: flex; flex-direction: column; justify-content: center; flex: 1;">
+        <button mat-stroked-button color="accent" routerLink="/projects">Back</button>
+      </div>
+    </div>
+
+    <!-- <p *ngFor="let task of tasks">
+      {{task.data.title}}
+      <input #taskEdit type="text">
+      <button (click)="onEdit(task, taskEdit.value)">edit</button>
+      <button (click)="onRemove(task)">remove</button>
+    </p> -->
+
+    <div class="wrapper2">
+      <div id="started" class="taskBlock" [ngClass]="{'taskBlockDarkMode':isDarkTheme, 'taskBlockLightkMode':!isDarkTheme}" (drop)="drop($event)" (dragover)="allowDrop($event)">
+        <div class="header">
+          <span style="color: rgb(55, 198, 255);">Started Tasks</span>
+        </div>
+          <div [id]='task.id' [class.hide]="task.data.status != 'started'" class="taskListItem" [ngClass]="{'taskBackColorDark':isDarkTheme, 'taskBackColorLight':!isDarkTheme}" style="color: rgb(55, 198, 255);" *ngFor="let task of tasks; let i=index" draggable="true" (dragstart)="drag($event, task.data.status)">
+            <span *ngIf="task.data.status == 'started'" >{{task.data.title}}</span>
+          </div>
+      </div>
+
+      <div id="inProgress" class="taskBlock" [ngClass]="{'taskBlockDarkMode':isDarkTheme, 'taskBlockLightkMode':!isDarkTheme}" (drop)="drop($event)" (dragover)="allowDrop($event)">
+        <div class="header">
+          <span style="color: rgb(225, 28, 231);">In Progress Tasks</span>
+        </div>
+          <div [id]='task.id' [class.hide]="task.data.status != 'inProgress'" class="taskListItem" [ngClass]="{'taskBackColorDark':isDarkTheme, 'taskBackColorLight':!isDarkTheme}" style="color: rgb(225, 28, 231);" *ngFor="let task of tasks; let i=index" draggable="true" (dragstart)="drag($event, task.data.status)">
+            <span *ngIf="task.data.status == 'inProgress'" >{{task.data.title}}</span>
+          </div>
+      </div>
+
+      <div id="done" class="taskBlock" [ngClass]="{'taskBlockDarkMode':isDarkTheme, 'taskBlockLightkMode':!isDarkTheme}" (drop)="drop($event)" (dragover)="allowDrop($event)">
+        <div class="header">
+          <span style="color: rgb(38, 212, 38);">Done Tasks</span>
+        </div>
+          <div [id]='task.id' [class.hide]="task.data.status != 'done'" class="taskListItem" [ngClass]="{'taskBackColorDark':isDarkTheme, 'taskBackColorLight':!isDarkTheme}" style="color: rgb(38, 212, 38);" *ngFor="let task of tasks; let i=index" draggable="true" (dragstart)="drag($event, task.data.status)">
+            <span *ngIf="task.data.status == 'done'" >{{task.data.title}}</span>
+            <span style="float: right;" (click)="onRemove(task)">x</span>
+          </div>
+      </div>
+    </div>
+  </div>
+
+</div>

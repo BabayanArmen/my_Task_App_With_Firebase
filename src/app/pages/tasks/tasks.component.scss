@@ -1,0 +1,99 @@
+.wrapper{
+  width: 100%;
+  height: 100vh;
+}
+.wrapperBackColorLightMode{
+  background-color: rgba(248, 246, 232, 0.767);
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.responsiveMenuIcon{
+  display: none;
+}
+.content{
+  padding: 10px;
+}
+.listItem:hover{
+  background-color: rgb(120, 121, 120);
+  color: white;
+  transition: 500ms;
+}
+.listBackColor1{
+  background-color: rgb(75, 75, 75);
+}
+.listBackColor2{
+  background-color: rgb(224, 223, 206);
+}
+.removeButton:hover{
+  background-color: #d43d5b;
+  color: white;
+}
+@media only screen and (max-width: 600px) {
+  .responsiveMenuIcon{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+  }
+  .menuItem{
+      display: none;
+  }
+}
+//////////////////////////////////////////////////////
+.wrapper2{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.taskBlock{
+  display: flex;
+  flex-direction: column;
+  // border: 1px solid grey;
+  border-radius: 3px;
+  margin: 5px;
+  width: 100%;
+  padding: 5px;
+}
+.taskBlockDarkMode{
+  background-color: rgb(68, 75, 72);
+  // background-color: rgb(63, 63, 63);
+  box-shadow: 3px 3px 5px 2px rgb(32, 32, 32);
+}
+.taskBlockLightkMode{
+  background-color: rgba(248, 246, 232, 0.767);
+  box-shadow: 3px 3px 5px 2px rgb(196, 196, 196);
+}
+.header{
+  border-bottom: 1px solid rgb(201, 201, 201);
+  text-align: center;
+}
+.taskListItem{
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.taskBackColorDark{
+  background-color: rgb(77, 88, 84);
+}
+.taskBackColorLight{
+  background-color: rgb(225, 231, 229);
+}
+.hide{
+  display: none;
+}
+.boxClass1{
+  width: 50px;
+  height: 50px;
+  background-color: green;
+}
+.boxClass2{
+  width: 50px;
+  height: 50px;
+  background-color: blue;
+}
+.box{
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+}

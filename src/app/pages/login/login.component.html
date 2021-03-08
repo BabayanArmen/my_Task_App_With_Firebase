@@ -1,0 +1,29 @@
+<div class="wrapper mat-app-background" [ngClass]="{'dark-theme-mode':isDarkTheme, 'wrapperBackColorLightMode':!isDarkTheme}">
+  <p>hello git</p>
+  <div class="header">
+    <mat-slide-toggle class="dark-mode-toggle" [(ngModel)]="isDarkTheme" (change)="setTheme()">Dark Mode</mat-slide-toggle>
+  </div>
+
+  <mat-card class="login mat-app-background" [ngClass]="{'dark-theme-mode':isDarkTheme}">
+    <div class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>E-mail</mat-label>
+        <input matInput placeholder="e-mail" [(ngModel)]="email">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput placeholder="password" [(ngModel)]="password">
+      </mat-form-field>
+      <div class="login-footer">
+        <div class="footer-left-side">
+          <a [ngStyle]="{color: isDarkTheme? 'white': 'blue'}" routerLink='register'>Register</a>
+        </div>
+        <div>
+          <button mat-raised-button color="primary" (click)="onSignIn()">Sing in</button>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+
+</div>
+
